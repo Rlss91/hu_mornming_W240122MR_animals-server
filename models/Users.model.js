@@ -18,6 +18,16 @@ const findUserByEmail = (email) => {
   return Users.findOne({ email });
 };
 
+const createUser = (name, email, hashedPassword) => {
+  const user = new Users({
+    name,
+    email,
+    password: hashedPassword,
+  });
+  return user.save();
+};
+
 module.exports = {
   findUserByEmail,
+  createUser,
 };
