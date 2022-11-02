@@ -6,6 +6,8 @@ const usersSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  isMailValid: { type: Boolean, default: false },
+  secretKey: { type: String },
 });
 
 /*
@@ -18,11 +20,12 @@ const findUserByEmail = (email) => {
   return Users.findOne({ email });
 };
 
-const createUser = (name, email, hashedPassword) => {
+const createUser = (name, email, hashedPassword, secretKey) => {
   const user = new Users({
     name,
     email,
     password: hashedPassword,
+    secretKey,
   });
   return user.save();
 };
