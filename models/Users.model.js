@@ -30,7 +30,12 @@ const createUser = (name, email, hashedPassword, secretKey) => {
   return user.save();
 };
 
+const updateIsMailValid = (email) => {
+  return Users.findOneAndUpdate({ email }, { isMailValid: true });
+};
+
 module.exports = {
   findUserByEmail,
   createUser,
+  updateIsMailValid,
 };
