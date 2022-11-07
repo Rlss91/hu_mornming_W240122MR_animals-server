@@ -25,6 +25,7 @@ router.post("/", async (req, res) => {
       secretKey
     );
     const linkToSend = `http://localhost:8000/api/confirmregister/${validatedValue.email}/${secretKey}`;
+    console.log("linkToSend", linkToSend);
     await sendEmail(
       process.env.EMAIL_EMAIL,
       validatedValue.email,
