@@ -4,6 +4,8 @@ const router = express.Router();
 const registerRouter = require("./api/register");
 const confirmRegisterRouter = require("./api/confirmregister");
 const loginRouter = require("./api/login");
+const forgetPasswordRouter = require("./api/forgetpassword");
+const resetPasswordRouter = require("./api/resetPassword");
 const sendEmail = require("../config/mailer");
 
 // /api/register
@@ -12,6 +14,10 @@ router.use("/register", registerRouter);
 router.use("/confirmregister", confirmRegisterRouter);
 // /api/login
 router.use("/login", loginRouter);
+// /api/forgetpassword
+router.use("/forgetpassword", forgetPasswordRouter);
+// /api/resetpassword
+router.use("/resetpassword", resetPasswordRouter);
 
 // /api/sendemail
 router.get("/sendemail", async (req, res) => {

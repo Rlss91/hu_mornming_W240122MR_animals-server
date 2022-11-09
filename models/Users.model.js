@@ -34,8 +34,13 @@ const updateIsMailValid = (email) => {
   return Users.findOneAndUpdate({ email }, { isMailValid: true });
 };
 
+const updateUserPasswordByEmail = (email, hashedPassword) => {
+  return Users.findOneAndUpdate({ email }, { password: hashedPassword });
+};
+
 module.exports = {
   findUserByEmail,
   createUser,
   updateIsMailValid,
+  updateUserPasswordByEmail,
 };

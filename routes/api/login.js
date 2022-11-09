@@ -30,9 +30,13 @@ router.post("/", async (req, res) => {
       throw "invalid email and/or password";
     }
     //create token with user id
-    const token = await jwt.generateToken({
-      _id: user._id,
-    });
+    const token = await jwt.generateToken(
+      {
+        _id: user._id,
+      },
+      process.env.JWT_KEY,
+      { expiresIn: "30d" }
+    );
     //send the token to the client
     res.json({ token });
   } catch (error) {
