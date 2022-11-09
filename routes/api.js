@@ -6,6 +6,7 @@ const confirmRegisterRouter = require("./api/confirmregister");
 const loginRouter = require("./api/login");
 const forgetPasswordRouter = require("./api/forgetpassword");
 const resetPasswordRouter = require("./api/resetPassword");
+const uploadRouter = require("./api/upload");
 const sendEmail = require("../config/mailer");
 
 // /api/register
@@ -18,6 +19,8 @@ router.use("/login", loginRouter);
 router.use("/forgetpassword", forgetPasswordRouter);
 // /api/resetpassword
 router.use("/resetpassword", resetPasswordRouter);
+// /api/upload
+router.use("/upload", uploadRouter);
 
 // /api/sendemail
 router.get("/sendemail", async (req, res) => {
