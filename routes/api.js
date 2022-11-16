@@ -8,6 +8,7 @@ const forgetPasswordRouter = require("./api/forgetpassword");
 const resetPasswordRouter = require("./api/resetPassword");
 const uploadRouter = require("./api/upload");
 const sendEmail = require("../config/mailer");
+const animalsRouter = require("./api/animals");
 
 // /api/register
 router.use("/register", registerRouter);
@@ -21,6 +22,8 @@ router.use("/forgetpassword", forgetPasswordRouter);
 router.use("/resetpassword", resetPasswordRouter);
 // /api/upload
 router.use("/upload", uploadRouter);
+// /api/animals
+router.use("/animals", animalsRouter);
 
 // /api/sendemail
 router.get("/sendemail", async (req, res) => {
