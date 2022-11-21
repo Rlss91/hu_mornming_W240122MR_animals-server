@@ -11,6 +11,16 @@ const upload = multer.createMulter(
 const animalsValidation = require("../../validation/animals.validation");
 const animalsSchema = require("../../models/Animals.model");
 
+router.get("/", async (req, res) => {
+  try {
+    const animals = await animalsSchema.selectAniamls();
+    res.json(animals);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ error: err });
+  }
+});
+
 router.post("/", upload.single("animalimg"), async (req, res) => {
   try {
     const validatedValue = await animalsValidation.addAnimalValidation(

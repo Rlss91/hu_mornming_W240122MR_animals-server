@@ -42,6 +42,11 @@ const saveAnimal = (name, race, date, gender, img, parents) => {
   return animal.save();
 };
 
+const selectAniamls = () => {
+  return Animals.find();
+};
+
 module.exports = {
   saveAnimal,
+  selectAniamls,
 };
