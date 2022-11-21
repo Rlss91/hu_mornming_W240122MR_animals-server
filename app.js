@@ -15,13 +15,17 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// app.use("/", indexRouter);
+// app.use("/users", usersRouter);
 app.use("/api", apiRouter);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 // app.use("/api/register")
 // app.use("/api/login")
 // app.use("/api/asdfa")
