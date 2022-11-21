@@ -1,15 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+const multer = require("../../config/multerTypes");
+const upload = multer.createMulter(
+  "uploads/",
+  3000000,
+  multer.allowedTypes.img
+);
+
 const animalsValidation = require("../../validation/animals.validation");
 const animalsSchema = require("../../models/Animals.model");
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("animalimg"), async (req, res) => {
   try {
     const validatedValue = await animalsValidation.addAnimalValidation(
       req.body
     );
-    const img = "?";
+    const img = req.file.destination + req.file.filename;
     const animal = await animalsSchema.saveAnimal(
       validatedValue.name,
       validatedValue.race,

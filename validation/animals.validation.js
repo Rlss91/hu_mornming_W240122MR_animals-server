@@ -5,7 +5,7 @@ const addAnimalSchema = joi.object({
   race: joi.string().required().min(2).max(255).trim(),
   date: joi.string().required().min(5).max(255).trim(),
   gender: joi.string().required().min(4).max(255).trim(),
-  img: joi.any(),
+  animalimg: joi.any(),
   parents: joi.object({
     father: joi.string().hex().length(24).trim(),
     mother: joi.string().hex().length(24).trim(),
